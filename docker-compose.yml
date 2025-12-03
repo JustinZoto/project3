@@ -1,0 +1,40 @@
+services:
+  users:
+    build:
+      context: ./users
+      dockerfile: Dockerfile.users
+    ports:
+      - "9000:5000"
+    networks:
+      - zotojustnet
+
+  availability:
+    build:
+      context: ./availability
+      dockerfile: Dockerfile.availability
+    ports:
+      - "9001:5000"
+    networks:
+      - zotojustnet
+
+  reservations:
+    build:
+      context: ./reservations
+      dockerfile: Dockerfile.reservations
+    ports:
+      - "9002:5000"
+    networks:
+      - zotojustnet
+
+  payments:
+    build:
+      context: ./payments
+      dockerfile: Dockerfile.payments
+    ports:
+      - "9003:5000"
+    networks:
+      - zotojustnet
+
+networks:
+  zotojustnet:
+    driver: bridge
